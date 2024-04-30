@@ -1,0 +1,1 @@
+export const  apiv1Url = import.meta.env.E_APIV1URL
