@@ -1,10 +1,11 @@
 import { Link } from "#rrd";
-import { Anchor, Portal, Burger } from "#mc";
+import {  Anchor, Portal, Burger, useMantineTheme } from "#mc";
 import { useDisclosure } from "#mh";
 import style from "./style.module.css";
 
 export default function () {
     const [opened, { toggle }] = useDisclosure();
+    let theme = useMantineTheme();
     let links = [
         { label: "About", path: "/about" },
         { label: "Projects", path: "/projects" },
@@ -22,7 +23,9 @@ export default function () {
                 onClick={toggle}
                 aria-label="Toggle navigation"
             />
-            <nav className={style.nav + " " + (opened ? style.active : "")}>
+            <nav
+                className={style.nav + " " + (opened ? style.active : "")}
+            >
                 {links}
             </nav>
         </>
