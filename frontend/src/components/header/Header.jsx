@@ -1,9 +1,17 @@
 import Nav from "#components/nav/Nav";
-import { Box } from "#mc";
+import Logo from "#components/logo/Logo";
+import Actions from "#components/actions/Actions";
+import { Group } from "#mc";
 export default function () {
     return (
-        <Box bg="cyan" component="header" style={{height: 70}}>
+        <Group
+            justify="space-between"
+            component="header"
+            style={{ height: 70, position: "relative" }}
+        >
             <Nav />
-        </Box>
+            <Logo />
+            <Actions />
+        </Group>
     );
 }
