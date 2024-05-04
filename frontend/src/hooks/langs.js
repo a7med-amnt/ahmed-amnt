@@ -11,15 +11,14 @@ export function useLangs() {
             document.documentElement.setAttribute("dir", "rtl");
             document.documentElement.setAttribute("lang", lang);
         }
-        if (lang == "en") {
+        else{
             document.documentElement.setAttribute("dir", "ltr");
             document.documentElement.setAttribute("lang", lang);
         }
     }
     function setLang(lang) {
         i18n.changeLanguage(lang);
-                autoSetDirLang();
-
+        autoSetDirLang();
     }
     return {
         toggleLang,
