@@ -5,7 +5,8 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [react()],
-    envPrefix:"E_",
+    postcss: "postcss.config.js",
+    envPrefix: "E_",
     resolve: {
         alias: {
             //---react

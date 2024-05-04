@@ -20,10 +20,13 @@ export const theme = createTheme({
     primaryColor: "primary",
     colors: {
         primary: colorsTuple("#FFC0CB"),
+        mDark: colorsTuple("#1b1b1b"),
+        mLight: colorsTuple("#f5f5f5"),
         bg: virtualColor({
-            name: "primary",
-            light: "#000",
-            dark: "#fff"
+            name: "bg",
+            light: "mLight",
+            dark: "mDark"
         })
-    }
+    },
+    fontFamily: "'Marhey', sans-serif"
 });

@@ -1,21 +1,23 @@
 .toggle-nav-btn {
     display: none;
 }
-@media (max-width: 700px) {
+.nav {
+    background-color: var(--mantine-color-bg-0);
+}
+@media (max-width: $mantine-breakpoint-sm) {
     .toggle-nav-btn {
         display: block;
     }
     .nav {
         display: none;
         position: absolute;
-        top: 100%;
+        top: calc(100% + 30px);
         left: 50%;
         transform: translateX(-50%);
-        width: 250px;
+        width: 300px;
         height: 500px;
         border-radius: 10px;
         flex-direction: column;
-        background-color: var(--mantine-color-bg-1);
         box-shadow: 0px 0 3px var(--mantine-color-primary-1);
         justify-content: center;
         align-items: center;

@@ -1,7 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "#rrd";
 import Main from "#layouts/Main";
-import Home from "#pages/Home";
-import About from "#pages/About";
+import Home from "#pages/home/Home";
+import About from "#pages/about/About";
+import Projects from "#pages/projects/Projects";
 
 export default function () {
     const router = createBrowserRouter([
@@ -14,8 +15,12 @@ export default function () {
                     element: <Home />
                 },
                 {
-                    path:"about",
+                    path: "about",
                     element: <About />
+                },
+                {
+                    path: "projects",
+                    element: <Projects />
                 }
             ]
         }

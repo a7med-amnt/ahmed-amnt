@@ -1,8 +1,14 @@
 import { Box } from "#mc";
-export default function ({ children }) {
+export default function (props) {
     return (
-        <Box  component="main" style={{ height: "calc(100vh - 70px)" }}>
-            {children}
+        <Box
+            component="main"
+            style={{ minHeight: "calc(100vh - 70px)" }}
+           
+            pt={40}
+            {...props}
+        >
+            {props.children}
         </Box>
     );
 }
