@@ -3,15 +3,17 @@ export function useLangs() {
     let { i18n } = useTranslation();
     let lang = i18n.language;
     let toggleLang = function () {
+       
+
         if (lang == "ar") setLang("en");
-        if (lang == "en") setLang("ar");
+        else setLang("ar");
     };
+
     function autoSetDirLang() {
         if (lang == "ar") {
             document.documentElement.setAttribute("dir", "rtl");
             document.documentElement.setAttribute("lang", lang);
-        }
-        else{
+        } else {
             document.documentElement.setAttribute("dir", "ltr");
             document.documentElement.setAttribute("lang", lang);
         }
