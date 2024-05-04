@@ -19,6 +19,7 @@ export default function () {
                 <MantineProvider theme={theme}>
                     <Notifications position="top-center" limit={1} />
                     <Router />
+                    
                 </MantineProvider>
             </DirectionProvider>
         </ApiProvider>
