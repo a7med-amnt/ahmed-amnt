@@ -2,13 +2,15 @@ import { Link } from "#rrd";
 import { Anchor, Portal, Burger, useMantineTheme } from "#mc";
 import { useDisclosure } from "#mh";
 import style from "./style.module.css";
+import { useTranslation } from "#ri18n";
 
 export default function () {
+    const { t } = useTranslation();
     const [opened, { toggle }] = useDisclosure();
     let theme = useMantineTheme();
     let links = [
-        { label: "About", path: "/about" },
-        { label: "Projects", path: "/projects" },
+        { label: t("about"), path: "/about" },
+        { label: t("projects"), path: "/projects" }
     ].map(link => (
         <Anchor
             fz={21}
