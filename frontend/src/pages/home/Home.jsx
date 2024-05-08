@@ -1,12 +1,6 @@
 import { Flex, Stack, Title, Text, Image } from "#mc";
 export default function () {
-    var root = document.documentElement;
-
-    var style = getComputedStyle(root);
-
-    var val = style.getPropertyValue("--mantine-breakpoint-sm");
-
-    console.log(val);
+    
     return (
         <>
             <Flex
