@@ -1,5 +1,5 @@
 import express from "express";
-import { signup, signin } from "#controllers/auth.js";
+import {  signin } from "#controllers/auth.js";
 import dataValidator from "#middlewares/dataValidator.js";
 import {  signinValidation } from "#schemas/authValidation.js";
 

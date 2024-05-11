@@ -1,3 +1,4 @@
+import path from "path";
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
@@ -9,6 +10,7 @@ dotenv.config();
 connectDb();
 
 app.use(cors());
+app.use("/public", express.static(path.join(path.resolve(), "public")));
 app.use(router);
 
 let port = process.env.PORT || 4948;

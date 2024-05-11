@@ -1,13 +1,8 @@
 import mongoose from "mongoose";
 
 export default {
-    name: {
-        type: String,
-        require: true,
-        minlength: 2,
-        maxlength: 20
-    },
-    email: {
+    name: String,
+    secretWord: {
         type: String,
         require: true,
         unique: true
@@ -16,5 +11,6 @@ export default {
         type: String,
         require: true
     },
-    notes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Note" }]
+    shortBio: String,
+    bio: String
 };

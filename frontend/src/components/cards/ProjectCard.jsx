@@ -7,25 +7,24 @@ import {
     Button,
     ActionIcon,
     Image,
-    Anchor
+    Anchor,
+    AspectRatio
 } from "#mc";
 import { IconBrandGithub } from "#ti";
+import { baseUrl } from "#constants/api";
 export default function ({ project }) {
-    /* let {
-        name,
-        title,
-        description,
-        _id,
-        imgSrc,
-        projectUrl,
-        projectGithubUrl
-    } = project;*/
-    let { title, type, description, imgSrc, projectUrl, projectGithubUrl } =
+    let { _id, title, type, description, img, projectUrl, projectGithubUrl } =
         project;
+    const imgSrc = baseUrl + "/public/imgs/projects/" + img;
+
     return (
         <Box p="lg">
-            <Image mb={10} src={"/imgs/" + imgSrc} />
-            <Title order={3}>{title}</Title>
+            <AspectRatio ratio={19 / 9}>
+                <Image mb={10} src={imgSrc} />
+            </AspectRatio>
+            <Anchor component={Link} to={"/projects/" + _id}>
+                <Title order={3}>{title}</Title>
+            </Anchor>
             <Text my={10}>{description}</Text>
             <Group justify="space-between">
                 <ActionIcon>

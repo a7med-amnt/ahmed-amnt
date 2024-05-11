@@ -11,10 +11,11 @@ userSchema.methods.genToken = function () {
     return jwt.sign({ _id: this._id }, process.env.JWT_KEY);
 };
 userSchema.methods.comPas = function (password) {
-    return bcryptjs.compareSync(password, this.password);
+    if(password == this.password)return true
+    else return false
 };
-userSchema.statics.findByEmail = async function (email) {
-    return await this.findOne({ email });
+userSchema.statics.findBySecretWord = async function (secretWord) {
+    return await this.findOne({ secretWord });
 };
 
 const User = mongoose.model("User", userSchema);

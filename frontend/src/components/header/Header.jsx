@@ -7,7 +7,7 @@ export default function () {
         <Group
             justify="space-between"
             component="header"
-            style={{ height: 70, position: "relative" }}
+            style={{ height: 70, position: "relative", zIndex: 10 }}
         >
             <Nav />
             <Logo />
