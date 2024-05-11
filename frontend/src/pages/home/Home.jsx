@@ -1,6 +1,9 @@
 import { Flex, Stack, Title, Text, Image } from "#mc";
+import { useGetProfileQuery } from "#api/user";
 export default function () {
-    
+    let user = {};
+    let { data, isSuccess } = useGetProfileQuery();
+    if (isSuccess) user = data.user;
     return (
         <>
             <Flex
@@ -10,18 +13,10 @@ export default function () {
             >
                 <Image src={"/imgs/developer-pic-1.png"} />
                 <Stack>
-                    <Title>
-                        Turning Vision Into Reality With Code And Design.{" "}
-                    </Title>
-                    <Text>
-                        As a skilled full-stack developer, I am dedicated to
-                        turning ideas into innovative web applications. Explore
-                        my latest projects and articles, showcasing my expertise
-                        in React.js and web development.
-                    </Text>
+                    <Title>{user.shortBio}</Title>
+                    <Text>{user.preview}</Text>
                 </Stack>
             </Flex>
-            
         </>
     );
 }

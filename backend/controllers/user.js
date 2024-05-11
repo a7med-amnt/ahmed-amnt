@@ -38,5 +38,5 @@ export const getProfile = eah(async function (rq, rs, nx) {
 
     let user = await User.findById(userId);
     
-    rs.json({ messge: "find user successfully",user:{name:user.name,shortBio:user.shortBio,bio:user.bio} });
+    rs.json({ messge: "find user successfully",user });
 });

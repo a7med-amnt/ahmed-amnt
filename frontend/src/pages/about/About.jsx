@@ -3,19 +3,21 @@ import Biography from "./components/Biography";
 import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import style from "./styles/style.module.css";
+import { useGetProfileQuery } from "#api/user";
 
 export default function () {
+    let user = {};
+    let { data, isSuccess } = useGetProfileQuery();
+    if (isSuccess) user = data.user;
     return (
         <>
-            <Title mb="xl">Passion Fuels Purpose!</Title>
+            <Title mb="xl">Nothing</Title>
             <Flex
                 direction={{ base: "column", md: "row" }}
                 align={{ base: "center", md: "flex-start" }}
             >
-                <img className={style.img} src="/imgs/developer-pic-2.png" />
-                <Biography />
+                <Text>{user.bio}</Text>
             </Flex>
-            
         </>
     );
 }

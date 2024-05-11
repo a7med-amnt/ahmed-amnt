@@ -7,7 +7,8 @@ export function removeProjectImg(imgname) {
     unlink(imgPath, err => {
         if (err) {
             console.log(err);
-            throw err;
+            return
+            //throw err;
         }
         console.log("file was deleted");
     });

@@ -4,5 +4,6 @@ export default {
     title: String,
     description: String,
     img: String,
-    type: String
+    websiteUrl: String,
+    githubUrl: String,
 };

@@ -12,5 +12,7 @@ export default {
         require: true
     },
     shortBio: String,
-    bio: String
+    bio: String,
+    preview: String,
+    
 };

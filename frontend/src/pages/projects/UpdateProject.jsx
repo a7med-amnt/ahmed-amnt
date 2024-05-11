@@ -1,31 +1,36 @@
-import { Modal, TextInput, FileButton, Button, Space } from "#mc";
-import { useDisclosure } from "#mh";
+import { Box, TextInput, FileButton, Button, Space } from "#mc";
+import { useParams } from "#rrd";
 import { useForm } from "#mf";
-import { useAddProjectMutation } from "#api/project";
+import { useGetProjectQuery, useUpdateProjectMutation } from "#api/project";
 
-export default function ({ isOpened, close }) {
-    const [addProject] = useAddProjectMutation();
+export default function () {
+    const { projectId } = useParams();
+    const { data, isSuccess } = useGetProjectQuery(projectId);
+    const [updateProject] = useUpdateProjectMutation();
 
     const form = useForm({
         mode: "uncontrolled",
         initialValues: {
             title: "",
             description: "",
-            type: "",
-            img: ""
+            img: "",
+            githubUrl: "",
+            websiteUrl: ""
         }
     });
+    if (isSuccess) form.initialize(data.project);
 
-    function handleAddProject() {
+    function handleUpdateProject() {
         let formData = new FormData();
         if (form.getValues().img) formData.append("img", form.getValues().img);
         formData.append("title", form.getValues().title);
         formData.append("description", form.getValues().description);
-        formData.append("type", form.getValues().type);
-        addProject(formData);
+        formData.append("websiteUrl", form.getValues().websiteUrl);
+        formData.append("githubUrl", form.getValues().githubUrl);
+        updateProject({ data: formData, projectId });
     }
     return (
-        <Modal opened={isOpened} onClose={close} title="Add Project">
+        <Box>
             <TextInput
                 label="Title"
                 placeholder="Enter here"
@@ -38,19 +43,25 @@ export default function ({ isOpened, close }) {
                 {...form.getInputProps("description")}
             />
             <Space h="sm" />
-            <TextInput
-                label="Type"
+                 <TextInput
+                label="Website URL"
                 placeholder="Enter here"
-                {...form.getInputProps("type")}
+                {...form.getInputProps("websiteUrl")}
+            />
+            <Space h="sm" />
+            <TextInput
+                label="github URL"
+                placeholder="Enter here"
+                {...form.getInputProps("githubUrl")}
             />
             <Space h="sm" />
             <FileButton {...form.getInputProps("img")}>
                 {props => <Button {...props}>select image</Button>}
             </FileButton>
             <Space h="xl" />
-            <Button onClick={handleAddProject} fullWidth>
-                Add
+            <Button onClick={handleUpdateProject} fullWidth>
+                Update
             </Button>
-        </Modal>
+        </Box>
     );
 }

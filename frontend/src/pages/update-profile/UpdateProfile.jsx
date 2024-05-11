@@ -1,4 +1,4 @@
-import { Modal, TextInput, FileButton, Button, Space, Textarea } from "#mc";
+import { Box, TextInput, FileButton, Button, Space, Textarea } from "#mc";
 import { useDisclosure } from "#mh";
 import { useForm } from "#mf";
 import { useGetProfileQuery, useUpdateProfileMutation } from "#api/user";
@@ -12,17 +12,18 @@ export default function ({ isOpened, close }) {
         initialValues: {
             name: "",
             shortBio: "",
-            bio: ""
+            bio: "",
+            preview: ""
         }
     });
-    
+
     if (isSuccess) form.initialize(data.user);
 
     function handleUpdateProfile() {
         updateProfile(form.getValues());
     }
     return (
-        <Modal opened={isOpened} onClose={close} title="Update Profile">
+        <Box opened={isOpened} onClose={close} title="Update Profile">
             <TextInput
                 {...form.getInputProps("name")}
                 label="Name"
@@ -43,10 +44,19 @@ export default function ({ isOpened, close }) {
                 placeholder="Enter here"
                 {...form.getInputProps("bio")}
             />
+            <Space h="sm" />
+            <Textarea
+                autosize
+                minRows={5}
+                maxRows={10}
+                label="Preview"
+                placeholder="Enter here"
+                {...form.getInputProps("preview")}
+            />
             <Space h="xl" />
             <Button onClick={handleUpdateProfile} fullWidth>
                 Add
             </Button>
-        </Modal>
+        </Box>
     );
 }

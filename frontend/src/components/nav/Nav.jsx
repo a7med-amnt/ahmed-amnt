@@ -10,7 +10,9 @@ export default function () {
     let theme = useMantineTheme();
     let links = [
         { label: t("about"), path: "/about" },
-        { label: t("projects"), path: "/projects" }
+        { label: t("projects"), path: "/projects" },
+        { label: t("updateProfile"), path: "/update-profile" },
+        { label: t("addProject"), path: "/add-project" }
     ].map(link => (
         <Anchor
             fz={21}

@@ -36,8 +36,8 @@ export const update = eah(async function (rq, rs, nx) {
 
     if (file) {
         project.img = file.filename;
-    }
     if (currentProject.img) removeProjectImg(currentProject.img);
+    }
 
     await Project.findOneAndUpdate({ _id: projectId }, project);
 
