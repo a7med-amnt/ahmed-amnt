@@ -12,7 +12,8 @@ export default function () {
         { label: t("about"), path: "/about" },
         { label: t("projects"), path: "/projects" },
         { label: t("updateProfile"), path: "/update-profile" },
-        { label: t("addProject"), path: "/add-project" }
+        { label: t("addProject"), path: "/add-project" },
+        { label: t("signin"), path: "/signin" },
     ].map(link => (
         <Anchor
             fz={21}
