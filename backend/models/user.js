@@ -8,13 +8,8 @@ userSchema.pre("save", function () {
     this.password = bcryptjs.hashSync(this.password, process.env.BCRYPTJS_SALT);
 });
 userSchema.methods.genToken = function () {
-    console.log("this", this);
-    console.log("_id", this._id);
-    let token = jwt.sign({ _id: this._id }, process.env.JWT_KEY);
-    console.log("token", token);
-    let decodedToken = jwt.verify(token, process.env.JWT_KEY);
-    console.log("decodedToken", decodedToken);
-    return token;
+    
+    return jwt.sign({ _id: this._id }, process.env.JWT_KEY);
 };
 
 userSchema.methods.comPas = function (password) {
