@@ -8,11 +8,18 @@ userSchema.pre("save", function () {
     this.password = bcryptjs.hashSync(this.password, process.env.BCRYPTJS_SALT);
 });
 userSchema.methods.genToken = function () {
-    return jwt.sign({ _id: this._id }, process.env.JWT_KEY);
+    console.log("this", this);
+    console.log("_id", this._id);
+    let token = jwt.sign({ _id: this._id }, process.env.JWT_KEY);
+    console.log("token", token);
+    let decodedToken = jwt.verify(token, process.env.JWT_KEY);
+    console.log("decodedToken", decodedToken);
+    return token;
 };
+
 userSchema.methods.comPas = function (password) {
-    if(password == this.password)return true
-    else return false
+    if (password == this.password) return true;
+    else return false;
 };
 userSchema.statics.findBySecretWord = async function (secretWord) {
     return await this.findOne({ secretWord });
