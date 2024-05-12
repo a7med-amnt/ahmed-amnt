@@ -2,8 +2,9 @@ import { Flex, Stack, Title, Text, Image } from "#mc";
 import { useGetProfileQuery } from "#api/user";
 export default function () {
     let user = {};
-    let { data, isSuccess } = useGetProfileQuery();
+    let { data, isSuccess,error } = useGetProfileQuery();
     if (isSuccess) user = data.user;
+    console.log(error)
     return (
         <>
             <Flex
