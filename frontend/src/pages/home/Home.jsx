@@ -1,10 +1,16 @@
 import { Flex, Stack, Title, Text, Image } from "#mc";
 import { useGetProfileQuery } from "#api/user";
+import { useTranslation } from "#ri18n";
+
 export default function () {
+    const { t, i18n } = useTranslation();
     let user = {};
-    let { data, isSuccess,error } = useGetProfileQuery();
-    if (isSuccess) user = data.user;
-    console.log(error)
+    let { data, isSuccess, error } = useGetProfileQuery();
+    if (isSuccess) {
+        user = data.user;
+        
+    }
+
     return (
         <>
             <Flex
@@ -14,8 +20,8 @@ export default function () {
             >
                 <Image src={"/imgs/developer-pic-1.png"} />
                 <Stack>
-                    <Title>{user.shortBio}</Title>
-                    <Text>{user.preview}</Text>
+                    <Title>{t("article", { ns: "owner" })}</Title>
+                    <Text>{t("overview", { ns: "owner" })}</Text>
                 </Stack>
             </Flex>
         </>

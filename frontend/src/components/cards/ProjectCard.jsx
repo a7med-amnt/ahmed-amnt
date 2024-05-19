@@ -11,21 +11,23 @@ import {
     AspectRatio
 } from "#mc";
 import { IconBrandGithub } from "#ti";
-import { baseUrl } from "#constants/api";
+import { handleProjectImg } from "#utils/ele";
+import { useTranslation } from "#ri18n";
 
-export default function ({ project }) {
-    let { _id, title, type, description, img, projectUrl, projectGithubUrl } =
-        project;
-    const imgSrc = baseUrl + "/public/imgs/projects/" + img;
-
+export default function ({ project, onClick }) {
+    let { _id, img } = project;
+    const { t, i18n } = useTranslation();
     return (
-        <Box p="lg">
-            <Anchor component={Link} to={"/projects/" + _id}>
-                <AspectRatio ratio={16 / 9}>
-                    <Image mb={10} src={imgSrc} />
-                </AspectRatio>
-                <Title order={5}>{title}</Title>
-            </Anchor>
+        <Box
+            onClick={() => {
+                onClick({ _id });
+            }}
+            p="lg"
+        >
+            <AspectRatio ratio={16 / 9}>
+                <Image mb={10} src={handleProjectImg(img)} />
+            </AspectRatio>
+            <Title order={5}>{t("title", { ns: _id })}</Title>
         </Box>
     );
 }

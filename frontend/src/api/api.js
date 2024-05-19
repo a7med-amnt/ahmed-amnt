@@ -3,5 +3,6 @@ import { fetchBaseQueryConfig } from "#configs/api.js";
 
 export default createApi({
     baseQuery: fetchBaseQuery(fetchBaseQueryConfig),
-    endpoints: () => ({})
+    endpoints: () => ({}),
+    tagTypes: ["owner","projects","project"]
 });

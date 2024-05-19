@@ -1,0 +1,13 @@
+{
+    "name": "mys",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "b": "cd backend ; nodemon index",
+        "f": "cd frontend ; npm run dev"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}

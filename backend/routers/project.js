@@ -8,14 +8,17 @@ import {
     getProject
 } from "#controllers/project.js";
 import { projectImgUploader } from "#middlewares/uploaders.js";
+import checkTokon from "#middlewares/checkToken.js";
 
 const router = express.Router();
 
-router.route("/").post(projectImgUploader.single("img"), add);
 router.route("/").get(getProjects);
 router.route("/:projectId").get(getProject);
-router.route("/:projectId").put(projectImgUploader.single("img"), update);
-router.route("/:projectId/img").patch(changeImg);
-router.route("/:projectId").delete(deleteProject);
+router.route("/").post(checkTokon, projectImgUploader.single("img"), add);
+router
+    .route("/:projectId")
+    .put(checkTokon, projectImgUploader.single("img"), update);
+router.route("/:projectId/img").patch(checkTokon, changeImg);
+router.route("/:projectId").delete(checkTokon, deleteProject);
 
 export default router;

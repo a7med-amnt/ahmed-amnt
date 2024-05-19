@@ -1,10 +1,4 @@
-export function handleRes(
-    apiCb,
-    data,
-    defCb,
-    sucCb,
-    faiCb
-) {
+export function handleRes(apiCb, data, defCb, sucCb, faiCb) {
     apiCb(data)
         .unwrap()
         .then(result => {

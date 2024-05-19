@@ -1,0 +1,16 @@
+{
+    "langs": {
+        "ar": {
+            "name": "أحمد",
+            "overview": "لمحة عامة",
+            "bio": "السيرة الذاتي",
+            "article": "مقالة"
+        },
+        "en": {
+            "name": "Ahmed",
+            "overview": "overview",
+            "bio": "bio",
+            "article": "article"
+        }
+    }
+}

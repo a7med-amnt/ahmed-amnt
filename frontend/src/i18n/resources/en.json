@@ -1,6 +1,27 @@
 {
     "translation": {
-      "about": "About",
-      "projects": "Projects"
+        "about": "About",
+        "projects": "Projects",
+        "updateProfile": "Update Profile",
+        "updateProject": "Update Project",
+        "addProject": "Add Project",
+        "deleteProject": "Delete Project",
+        "secretWord": "Secret Word",
+        "passwerd": "Password",
+        "enterHere": "Enter Here",
+        "add": "Add",
+        "update": "Update",
+        "signin": "Signin",
+        "biography": "Biography",
+        "visit": "Visit",
+        "name": "Name",
+        "title": "Title",
+        "shortBio": "Short Bio",
+        "description": "Description",
+        "article": "Article",
+        "selectImg": "Select Image",
+        "websiteUrl": "Website Url",
+        "githubUrl": "Github Url",
+        "overview": "Overview"
     }
 }

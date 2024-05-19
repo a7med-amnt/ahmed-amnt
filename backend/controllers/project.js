@@ -8,6 +8,8 @@ export const add = eah(async function (rq, rs, nx) {
     const file = rq.file;
 
     if (file) project.img = file.filename;
+    project.langs = JSON.parse(project.langs);
+
     let newProject = new Project(project);
     await newProject.save();
 
@@ -18,7 +20,10 @@ export const getProject = eah(async function (rq, rs, nx) {
     const projectId = rq.params.projectId;
 
     let project = await Project.findById(projectId);
-    if (!project) project = {};
+    if (!project) {
+        project = {};
+        rs.json({ messge: "project not found", project });
+    }
     rs.json({ messge: "find project successfully", project });
 });
 
@@ -29,16 +34,16 @@ export const getProjects = eah(async function (rq, rs, nx) {
 });
 
 export const update = eah(async function (rq, rs, nx) {
+    const projectId = rq.params.projectId;
     const project = rq.body;
     const file = rq.file;
-    const projectId = rq.params.projectId;
     let currentProject = await Project.findById(projectId);
 
     if (file) {
         project.img = file.filename;
-    if (currentProject.img) removeProjectImg(currentProject.img);
+        if (currentProject.img) removeProjectImg(currentProject.img);
     }
-
+    project.langs = JSON.parse(project.langs);
     await Project.findOneAndUpdate({ _id: projectId }, project);
 
     rs.json({ messge: "project updated successfully" });
@@ -78,7 +83,7 @@ export const changeType = eah(async function (rq, rs, nx) {
 
 export const deleteProject = eah(async function (rq, rs, nx) {
     const projectId = rq.params.projectId;
-    
+
     let currentProject = await Project.findById(projectId);
 
     if (currentProject.img) removeProjectImg(currentProject.img);

@@ -1,10 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "#rrd";
+import { dashboardLoader } from "./loaders";
 import Main from "#layouts/Main";
 import Signin from "#pages/signin/Signin";
 import Home from "#pages/home/Home";
 import About from "#pages/about/About";
 import Projects from "#pages/projects/Projects";
 import Project from "#pages/projects/Project";
+import AdminProjects from "#pages/projects/AdminProjects";
 import Dashboard from "#pages/dashboard/Dashboard";
 import UpdateProfile from "#pages/update-profile/UpdateProfile";
 import AddProject from "#pages/projects/AddProject";
@@ -21,35 +23,42 @@ export default function () {
                     element: <Home />
                 },
                 {
-                    path: "/about",
+                    path: "about",
                     element: <About />
                 },
                 {
-                    path: "/projects",
+                    path: "projects",
                     element: <Projects />
                 },
                 {
-                    path: "/dashboard",
-                    element: <Dashboard />
-                },
-                {
-                    path: "/update-profile",
-                    element: <UpdateProfile />
-                },
-                {
-                    path: "/projects/:projectId",
+                    path: "projects/:projectId",
                     element: <Project />
                 },
                 {
-                    path: "/add-project",
-                    element: <AddProject />
+                    path: "dashboard",
+                    element: <Dashboard />,
+                    loader: dashboardLoader,
+                    children: [
+                        {
+                            path: "update-profile",
+                            element: <UpdateProfile />
+                        },
+                        {
+                            path: "add-project",
+                            element: <AddProject />
+                        },
+                        {
+                            path: "projects/update-project/:projectId",
+                            element: <UpdateProject />
+                        },
+                        {
+                            path: "projects",
+                            element: <AdminProjects />
+                        }
+                    ]
                 },
                 {
-                    path: "/projects/update-project/:projectId",
-                    element: <UpdateProject />
-                },
-                {
-                    path: "/signin",
+                    path: "signin",
                     element: <Signin />
                 }
             ]

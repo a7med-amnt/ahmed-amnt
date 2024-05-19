@@ -1,15 +1,13 @@
 import { useNavigate } from "#rrd";
-
 import { Flex, Title } from "#mc";
 import ProjectsCards from "#components/cards/ProjectsCards";
 import { useTranslation } from "#ri18n";
 
 export default function () {
     const nav = useNavigate();
-
     const { t } = useTranslation();
     function handleClick({ _id }) {
-        nav("/projects/" + _id);
+        nav("/dashboard/projects/update-project/" + _id);
     }
     return (
         <>

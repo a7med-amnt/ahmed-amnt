@@ -1,6 +1,27 @@
 {
     "translation": {
-    "about": "حول",
-    "projects": "مشاريع"
+        "about": "حول",
+        "projects": "المشاريع",
+        "updateProfile": "تعديل الملف الشخصي",
+        "updateProject": "تعديل المشروع",
+        "addProject": "أضافة مشروع",
+        "deleteProject": "حذف المشروع",
+        "secretWord": "كلمة السر",
+        "passwerd": "الرمز",
+        "enterHere": "أدخل هنا",
+        "add": "اضافة",
+        "update": "تعديل",
+        "signin": "تسجيل",
+        "biography": "السيرة الذاتية",
+        "visit": "زيارة",
+        "name": "الاسم",
+        "title": "العنوان",
+        "shortBio": "وصف قصير",
+        "description": "الوصف",
+        "article": "مقالة",
+        "selectImg": "اختر صورة",
+        "websiteUrl": "رابط المشروع",
+        "githubUrl": "رابط المشروع على Github",
+        "overview": "لمحة عامة"
     }
 }

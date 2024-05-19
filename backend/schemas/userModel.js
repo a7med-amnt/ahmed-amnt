@@ -1,7 +1,5 @@
 import mongoose from "mongoose";
-
 export default {
-    name: String,
     secretWord: {
         type: String,
         require: true,
@@ -11,8 +9,18 @@ export default {
         type: String,
         require: true
     },
-    shortBio: String,
-    bio: String,
-    preview: String,
-    
+    langs: {
+       ar:{
+         overview: String,
+                    bio: String,
+                    article: String,
+                    name: String
+       },
+       en:{
+         overview: String,
+                    bio: String,
+                    article: String,
+                    name: String
+       }
+    }
 };

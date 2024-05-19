@@ -4,14 +4,18 @@
 breakpoints
 */
 
-:root{
-  --bp-sm: 700px
+:root {
+    --bp-sm: 700px;
 }
 
 body {
     background-color: var(--mantine-color-bg-0);
 }
 
-section{
-  margin-top: 10px;
+section {
+    margin-top: 10px;
+}
+
+.mantine-Input-input {
+    text-align: inherit !important;
 }

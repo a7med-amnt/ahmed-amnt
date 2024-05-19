@@ -6,7 +6,6 @@ import error from "#utils/error.js";
 export const signin = eah(async function (rq, rs, nx) {
     const userData = rq.validData;
 
-    // check user if he already signup
     let user = null;
     user = await Users.findBySecretWord(userData.secretWord);
     if (!user) return nx(error("error signin"));
