@@ -6,7 +6,7 @@ export const fetchBaseQueryConfig = {
         const token = localStorage.getItem("token");
 
         if (token) {
-            headers.set("authorization", token);
+            headers.set("authorization", token );
         }
 
         return headers;

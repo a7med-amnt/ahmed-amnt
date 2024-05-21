@@ -4,8 +4,8 @@ export default function (props) {
         <Box
             component="main"
             style={{ minHeight: "calc(100vh - 70px)" }}
-           
             pt={40}
+            px="md"
             {...props}
         >
             {props.children}

@@ -2,9 +2,8 @@ import { useTranslation } from "#ri18n";
 export function useLangs() {
     let { i18n } = useTranslation();
     let lang = i18n.language;
+    
     let toggleLang = function () {
-       
-
         if (lang == "ar") setLang("en");
         else setLang("ar");
     };

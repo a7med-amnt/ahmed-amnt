@@ -5,14 +5,23 @@ const userApi = api.injectEndpoints({
     endpoints: b => ({
         updateProfile: b.mutation({
             query: body => ({
-                url: "/user",
+                url: "/owner",
                 body,
                 method: "put"
             }),
-            invalidatesTags:["owner"]
+            invalidatesTags: ["owner"]
         }),
-        getProfile: b.query({
+        getUser: b.query({
             query: () => "/user",
+            transformResponse: res => {
+                i18n.addResources("ar", "owner", res.user.langs.ar);
+                i18n.addResources("en", "owner", res.user.langs.en);
+                return res;
+            },
+            providesTags: ["owner"]
+        }),
+        getOwner: b.query({
+            query: () => "/owner",
             transformResponse: res => {
                 i18n.addResources("ar", "owner", res.user.langs.ar);
                 i18n.addResources("en", "owner", res.user.langs.en);
@@ -22,5 +31,6 @@ const userApi = api.injectEndpoints({
         })
     })
 });
-export default userApi
-export const { useGetProfileQuery, useUpdateProfileMutation } = userApi;
+export default userApi;
+export const { useGetUserQuery, useUpdateProfileMutation, useGetOwnerQuery } =
+    userApi;

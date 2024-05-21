@@ -8,10 +8,15 @@ import {
     TextInput,
     FileButton,
     Button,
+    Group,
     Space
 } from "#mc";
 import { useForm } from "#mf";
-import { useUpdateProjectMutation, useGetProjectQuery } from "#api/project";
+import {
+    useUpdateProjectMutation,
+    useGetProjectQuery,
+    useDeleteProjectMutation
+} from "#api/project";
 import { useTranslation } from "#ri18n";
 import { handleProjectImg } from "#utils/ele";
 
@@ -24,6 +29,7 @@ export default function () {
     let arT = i18n.getFixedT("ar");
     let enT = i18n.getFixedT("en");
     const [updateProject, result] = useUpdateProjectMutation();
+    const [deleteProject] = useDeleteProjectMutation();
     const { data, isSuccess, error } = useGetProjectQuery(projectId);
 
     const form = useForm({
@@ -67,7 +73,6 @@ export default function () {
             imgEle?.setAttribute("src", handleProjectImg(data.project.img));
         }
     }
-    console.log(imgEle);
     function handleUpdateProject() {
         let formData = new FormData();
         if (form.getValues().img) formData.append("img", form.getValues().img);
@@ -136,15 +141,25 @@ export default function () {
                 <Image id="upImg" ref={imgRef} />
             </AspectRatio>
             <Space h="sm" />
-            <FileButton
-                {...form.getInputProps("img")}
-                onChange={e => {
-                    form.getInputProps("img").onChange(e);
-                    handleImgChange(e);
-                }}
-            >
-                {props => <Button {...props}>{t("selectImg")}</Button>}
-            </FileButton>
+            <Group justify="space-between">
+                <FileButton
+                    {...form.getInputProps("img")}
+                    onChange={e => {
+                        form.getInputProps("img").onChange(e);
+                        handleImgChange(e);
+                    }}
+                >
+                    {props => <Button {...props}>{t("selectImg")}</Button>}
+                </FileButton>
+                <Button
+                    onClick={() => {
+                        deleteProject(projectId);
+                    }}
+                    color="red"
+                >
+                    {t("delete")}
+                </Button>
+            </Group>
             <Space h="xl" />
             <Button onClick={handleUpdateProject} fullWidth>
                 {t("update")}

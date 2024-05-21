@@ -19,14 +19,14 @@ import {
 import { IconBrandGithub, IconEdit, IconTrash, IconDotsVertical } from "#ti";
 import { handleProjectImg } from "#utils/ele";
 import { useTranslation } from "#ri18n";
-
+import ProjectSkeleton from "#components/skeletons/Project";
 export default function () {
     let project = {};
     let { projectId } = useParams();
     const { i18n } = useTranslation();
     const t = i18n.getFixedT(null, projectId);
 
-    let { data, isSuccess } = useGetProjectQuery(projectId);
+    let { data, isSuccess,isLoading } = useGetProjectQuery(projectId);
     let [updateProject] = useUpdateProjectMutation();
     let [deleteProject] = useDeleteProjectMutation();
 
@@ -37,6 +37,7 @@ export default function () {
     function handleDeleteProject() {
         deleteProject(_id);
     }
+    if (isLoading) return <ProjectSkeleton />;
     return (
         <Box p="lg">
             <AspectRatio ratio={16 / 9}>

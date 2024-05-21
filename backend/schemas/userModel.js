@@ -9,18 +9,26 @@ export default {
         type: String,
         require: true
     },
+    urls: {
+        github: String,
+        linkedin: String,
+        youtube: String,
+        twitter: String,
+        instagram: String,
+        facebook: String
+    },
     langs: {
-       ar:{
-         overview: String,
-                    bio: String,
-                    article: String,
-                    name: String
-       },
-       en:{
-         overview: String,
-                    bio: String,
-                    article: String,
-                    name: String
-       }
+        ar: {
+            overview: String,
+            bio: String,
+            article: String,
+            name: String
+        },
+        en: {
+            overview: String,
+            bio: String,
+            article: String,
+            name: String
+        }
     }
 };

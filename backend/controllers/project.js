@@ -13,7 +13,7 @@ export const add = eah(async function (rq, rs, nx) {
     let newProject = new Project(project);
     await newProject.save();
 
-    rs.json({ messge: "project added successfully" });
+    rs.json({ message: "project added successfully" });
 });
 
 export const getProject = eah(async function (rq, rs, nx) {
@@ -22,15 +22,15 @@ export const getProject = eah(async function (rq, rs, nx) {
     let project = await Project.findById(projectId);
     if (!project) {
         project = {};
-        rs.json({ messge: "project not found", project });
+        rs.json({ message: "project not found", project });
     }
-    rs.json({ messge: "find project successfully", project });
+    rs.json({ message: "find project successfully", project });
 });
 
 export const getProjects = eah(async function (rq, rs, nx) {
     let projects = await Project.find();
 
-    rs.json({ messge: "find projects successfully", projects });
+    rs.json({ message: "find projects successfully", projects });
 });
 
 export const update = eah(async function (rq, rs, nx) {
@@ -46,7 +46,7 @@ export const update = eah(async function (rq, rs, nx) {
     project.langs = JSON.parse(project.langs);
     await Project.findOneAndUpdate({ _id: projectId }, project);
 
-    rs.json({ messge: "project updated successfully" });
+    rs.json({ message: "project updated successfully" });
 });
 
 export const changeTitle = eah(async function (rq, rs, nx) {
@@ -54,7 +54,7 @@ export const changeTitle = eah(async function (rq, rs, nx) {
     const title = rq.body.title;
 
     await Project.findOneAndUpdate({ _id: projectId }, { title });
-    rs.json({ messge: "title changed successfully" });
+    rs.json({ message: "title changed successfully" });
 });
 
 export const changeDescription = eah(async function (rq, rs, nx) {
@@ -62,7 +62,7 @@ export const changeDescription = eah(async function (rq, rs, nx) {
     const description = rq.body.description;
 
     await Project.findOneAndUpdate({ _id: projectId }, { description });
-    rs.json({ messge: "description changed successfully" });
+    rs.json({ message: "description changed successfully" });
 });
 
 export const changeImg = eah(async function (rq, rs, nx) {
@@ -70,7 +70,7 @@ export const changeImg = eah(async function (rq, rs, nx) {
     const img = rq.file.filename;
 
     await Project.findOneAndUpdate({ _id: projectId }, { img });
-    rs.json({ messge: "image changed successfully" });
+    rs.json({ message: "image changed successfully" });
 });
 
 export const changeType = eah(async function (rq, rs, nx) {
@@ -78,7 +78,7 @@ export const changeType = eah(async function (rq, rs, nx) {
     const type = rq.body.type;
 
     await Project.findOneAndUpdate({ _id: projectId }, { type });
-    rs.json({ messge: "type changed successfully" });
+    rs.json({ message: "type changed successfully" });
 });
 
 export const deleteProject = eah(async function (rq, rs, nx) {
@@ -89,5 +89,5 @@ export const deleteProject = eah(async function (rq, rs, nx) {
     if (currentProject.img) removeProjectImg(currentProject.img);
 
     await Project.findOneAndDelete({ _id: projectId });
-    rs.json({ messge: "deleted successfully" });
+    rs.json({ message: "deleted successfully" });
 });

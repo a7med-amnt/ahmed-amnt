@@ -23,6 +23,7 @@ export default function ({ project, onClick }) {
                 onClick({ _id });
             }}
             p="lg"
+            style={{ flexBasis: 300, flexGrow: "1" }}
         >
             <AspectRatio ratio={16 / 9}>
                 <Image mb={10} src={handleProjectImg(img)} />

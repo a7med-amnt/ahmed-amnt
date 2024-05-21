@@ -8,6 +8,7 @@ export default function () {
             justify="space-between"
             component="header"
             style={{ height: 70, position: "relative", zIndex: 10 }}
+            px="md"
         >
             <Nav />
             <Logo />

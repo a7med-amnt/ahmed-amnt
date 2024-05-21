@@ -1,14 +1,23 @@
-import { Box, Tabs, TextInput, FileButton, Button, Space, Textarea } from "#mc";
+import {
+    Box,
+    Stack,
+    Tabs,
+    TextInput,
+    FileButton,
+    Button,
+    Space,
+    Textarea
+} from "#mc";
 import { useDisclosure } from "#mh";
 import { useForm } from "#mf";
-import { useGetProfileQuery, useUpdateProfileMutation } from "#api/user";
+import { useGetOwnerQuery, useUpdateProfileMutation } from "#api/user";
 import { useTranslation } from "#ri18n";
 
 export default function () {
     const { t, i18n } = useTranslation();
     let arT = i18n.getFixedT("ar");
     let enT = i18n.getFixedT("en");
-    const { data, isSuccess } = useGetProfileQuery();
+    const { data, isSuccess } = useGetOwnerQuery();
     const [updateProfile] = useUpdateProfileMutation();
 
     const form = useForm({
@@ -17,6 +26,14 @@ export default function () {
             langs: {
                 ar: { name: "", overview: "", bio: "", article: "" },
                 en: { name: "", overview: "", bio: "", article: "" }
+            },
+            urls: {
+                github: "",
+                linkedin: "",
+                youtube: "",
+                twitter: "",
+                instagram: "",
+                facebook: ""
             }
         }
     });
@@ -35,6 +52,14 @@ export default function () {
                     bio: data.user.langs.en.bio,
                     article: data.user.langs.en.article
                 }
+            },
+            urls: {
+                github: data?.user?.urls?.github,
+                linkedin: data?.user?.urls?.linkedin,
+                youtube: data?.user?.urls?.youtube,
+                twitter: data?.user?.urls?.twitter,
+                instagram: data?.user?.urls?.instagram,
+                facebook: data?.user?.urls?.facebook
             }
         };
         form.initialize(user);
@@ -115,6 +140,40 @@ export default function () {
                     />
                     <Space h="xl" />
                 </Tabs.Panel>
+                <Stack style={{ direction: "ltr" }}>
+                    <TextInput
+                        label={enT("github")}
+                        placeholder={enT("enterHere")}
+                        {...form.getInputProps("urls.github")}
+                    />
+                    <TextInput
+                        label={enT("youtube")}
+                        placeholder={enT("enterHere")}
+                        {...form.getInputProps("urls.youtube")}
+                    />
+                    <TextInput
+                        label={enT("linkedin")}
+                        placeholder={enT("enterHere")}
+                        {...form.getInputProps("urls.linkedin")}
+                    />
+                    <TextInput
+                        label={enT("twitter")}
+                        placeholder={enT("enterHere")}
+                        {...form.getInputProps("urls.twitter")}
+                    />
+                    <TextInput
+                        label={enT("instagram")}
+                        placeholder={enT("enterHere")}
+                        {...form.getInputProps("urls.instagram")}
+                    />
+                    <TextInput
+                        label={enT("facebook")}
+                        placeholder={enT("enterHere")}
+                        {...form.getInputProps("urls.facebook")}
+                    />
+
+                    <Space h="xl" />
+                </Stack>
             </Tabs>
             <Button onClick={handleUpdateProfile} fullWidth>
                 {t("update")}

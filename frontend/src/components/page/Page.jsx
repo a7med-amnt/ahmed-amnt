@@ -1,4 +1,4 @@
 import { Container } from "#mc";
 export default function ({ children }) {
-    return <Container>{children}</Container>;
+    return <Container p="0">{children}</Container>;
 }

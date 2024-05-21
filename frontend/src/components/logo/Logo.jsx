@@ -1,12 +1,17 @@
 import { Title } from "#mc";
-import { Link } from "#rrd";
+import { Link, useNavigate } from "#rrd";
 import style from "./style.module.css";
 export default function () {
+    let nav = useNavigate();
     return (
-      <Link to="/dashboard">
-        <Title className={style.logo} order={3}>
+        <Title
+            onDoubleClick={() => {
+                nav("/dashboard");
+            }}
+            className={style.logo}
+            order={3}
+        >
             AM
         </Title>
-      </Link>
     );
 }

@@ -3,6 +3,7 @@ import { Anchor, Portal, Burger, useMantineTheme } from "#mc";
 import { useDisclosure } from "#mh";
 import style from "./style.module.css";
 import { useTranslation } from "#ri18n";
+import SocialUrls from "./SocialUrls";
 
 export default function () {
     const { t } = useTranslation();
@@ -10,8 +11,7 @@ export default function () {
     let theme = useMantineTheme();
     let links = [
         { label: t("about"), path: "/about" },
-        { label: t("projects"), path: "/projects" },
-        
+        { label: t("projects"), path: "/projects" }
     ].map(link => (
         <Anchor
             fz={21}
@@ -36,6 +36,7 @@ export default function () {
             />
             <nav className={style.nav + " " + (opened ? style.active : "")}>
                 {links}
+                <SocialUrls />
             </nav>
         </>
     );

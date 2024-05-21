@@ -1,9 +1,9 @@
 import Router from "#routes/Router";
 import { MantineProvider, DirectionProvider } from "#mc";
 import { Notifications } from "#mn";
-import { ApiProvider } from "@reduxjs/toolkit/query/react";
+import { Provider } from "react-redux";
 import { theme } from "#configs/mc";
-import api from "#api/api";
+import store from "#store/store";
 import { useLangs } from "#hooks/langs";
 import "#i18n/i18n";
 import "@mantine/core/styles.css";
@@ -14,14 +14,13 @@ export default function () {
     const { autoSetDirLang } = useLangs();
     autoSetDirLang();
     return (
-        <ApiProvider api={api}>
+        <Provider store={store}>
             <DirectionProvider>
                 <MantineProvider theme={theme}>
                     <Notifications position="top-center" limit={1} />
                     <Router />
-                    
                 </MantineProvider>
             </DirectionProvider>
-        </ApiProvider>
+        </Provider>
     );
 }

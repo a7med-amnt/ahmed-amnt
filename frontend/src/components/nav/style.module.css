@@ -3,6 +3,7 @@
 }
 .nav {
     background-color: var(--mantine-color-bg-0);
+    display: flex;
 }
 @media (max-width: $mantine-breakpoint-sm) {
     .toggle-nav-btn {
