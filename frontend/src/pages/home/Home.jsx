@@ -6,7 +6,7 @@ import HomeSkeleton from "#components/skeletons/Home";
 export default function () {
     const { t, i18n } = useTranslation();
     let user = {};
-    let { data, isSuccess, error,isLoading } = useGetUserQuery();
+    let { data, isSuccess,isLoading } = useGetUserQuery();
     if (isSuccess) {
         user = data.user;
     }
