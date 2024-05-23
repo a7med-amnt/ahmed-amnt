@@ -13,6 +13,7 @@ import "#styles/main.css";
 export default function () {
     const { autoSetDirLang } = useLangs();
     autoSetDirLang();
+    
     return (
         <Provider store={store}>
             <DirectionProvider>

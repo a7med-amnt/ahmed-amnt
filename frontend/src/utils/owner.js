@@ -3,17 +3,38 @@ import userApi from "#api/user";
 import store from "#store/store";
 
 export async function isNotOwner() {
-    let result;
+    let bool = true;
     try {
         if (!tokenNotExist()) {
-            result = await store
+              await store
                 .dispatch(userApi.endpoints.getOwner.initiate())
                 .unwrap();
+            bool = false;
+        } else {
+            bool = true;
         }
     } catch (e) {
         console.log(e);
-        return true
+        bool = true;
     }
-    if (!result) return true;
-    return false;
+
+    return bool;
+}
+export async function isOwner() {
+    let bool = false;
+    try {
+        if (!tokenNotExist()) {
+             await store
+                .dispatch(userApi.endpoints.getOwner.initiate())
+                .unwrap();
+            bool = true;
+        } else {
+            bool = false;
+        }
+    } catch (e) {
+        console.log(e);
+        bool = false;
+    }
+
+    return bool;
 }

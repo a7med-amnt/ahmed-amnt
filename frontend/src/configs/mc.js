@@ -19,7 +19,7 @@ export const theme = createTheme({
     },
     primaryColor: "primary",
     colors: {
-        primary: colorsTuple("#FFC0CB"),
+        primary: colorsTuple("darkcyan"),
         mDark: colorsTuple("#1b1b1b"),
         mLight: colorsTuple("#f5f5f5"),
         bg: virtualColor({

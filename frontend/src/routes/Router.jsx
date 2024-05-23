@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "#rrd";
-import { dashboardLoader } from "./loaders";
+import { dashboardLoader,baseLoader } from "./loaders";
 import Main from "#layouts/Main";
 import Signin from "#pages/signin/Signin";
 import Home from "#pages/home/Home";
@@ -17,6 +17,7 @@ export default function () {
         {
             path: "/",
             element: <Main />,
+            loader: baseLoader,
             children: [
                 {
                     index: true,

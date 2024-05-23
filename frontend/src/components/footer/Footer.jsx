@@ -3,12 +3,13 @@ export default function () {
     return (
         <Center
             component="footer"
+            mt="md"
             style={{ height: 50, borderTop: "solid 1px" }}
         >
             <Text>
                 By{" "}
                 <Box component="span" c="primary">
-                    Me
+                    a7med.amnt@gmail.com
                 </Box>
             </Text>
         </Center>

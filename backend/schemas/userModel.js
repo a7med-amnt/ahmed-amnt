@@ -9,6 +9,7 @@ export default {
         type: String,
         require: true
     },
+    email: String,
     urls: {
         github: String,
         linkedin: String,
