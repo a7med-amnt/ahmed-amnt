@@ -6,14 +6,14 @@ import HomeSkeleton from "#components/skeletons/Home";
 export default function () {
     const { t, i18n } = useTranslation();
     let user = {};
-    let { data, isSuccess,isLoading } = useGetUserQuery();
+    let { data, isSuccess, isLoading } = useGetUserQuery();
     if (isSuccess) {
         user = data.user;
     }
     return (
         <>
             <Flex
-                direction={{ base: "column", md: "row" }}
+                direction={{ base: "column", sm: "row" }}
                 align="center"
                 justify="center"
             >
@@ -21,7 +21,7 @@ export default function () {
                     <HomeSkeleton />
                 ) : (
                     <>
-                        <Image src={"/imgs/developer-pic-1.png"} />
+                        <Image w={{base:"100%",sm:"40%"}} src={"/imgs/developer-pic-1.png"} />
                         <Stack>
                             <Title>{t("article", { ns: "owner" })}</Title>
                             <Text>{t("overview", { ns: "owner" })}</Text>

@@ -15,7 +15,7 @@ export default function () {
     ].map(link => (
         <Anchor
             fz={21}
-            my={5}
+            my={{ base: "xs", sm: 0 }}
             key={link.label}
             mx="sm"
             c="re.1"
