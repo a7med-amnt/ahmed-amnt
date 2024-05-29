@@ -28,7 +28,7 @@ export const getProject = eah(async function (rq, rs, nx) {
 });
 
 export const getProjects = eah(async function (rq, rs, nx) {
-    let projects = await Project.find();
+    let projects = await Project.find().sort({createdAt:-1});
 
     rs.json({ message: "find projects successfully", projects });
 });

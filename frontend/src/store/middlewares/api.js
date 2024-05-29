@@ -17,12 +17,14 @@ export function notice(storeApi) {
                         title: "Success",
                         message: action.payload.message
                     });
+                    console.log(action)
                 }
                 if (isRejected(action)) {
                     notifications.show({
                         title: "Failure",
                         message: action.payload.data.message
                     });
+                    console.log(action)
                 }
             }
         }

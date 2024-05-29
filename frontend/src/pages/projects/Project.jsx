@@ -26,7 +26,7 @@ export default function () {
     const { i18n } = useTranslation();
     const t = i18n.getFixedT(null, projectId);
 
-    let { data, isSuccess,isLoading } = useGetProjectQuery(projectId);
+    let { data, isSuccess, isLoading } = useGetProjectQuery(projectId);
     let [updateProject] = useUpdateProjectMutation();
     let [deleteProject] = useDeleteProjectMutation();
 
