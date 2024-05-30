@@ -8,7 +8,8 @@ export const add = eah(async function (rq, rs, nx) {
     const file = rq.file;
 
     if (file) project.img = file.filename;
-    project.langs = JSON.parse(project.langs);
+    
+    //project.langs = JSON.parse(project.langs);
 
     let newProject = new Project(project);
     await newProject.save();

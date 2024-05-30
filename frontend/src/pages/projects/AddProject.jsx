@@ -1,4 +1,3 @@
-import { useRef } from "#r";
 import {
     Box,
     AspectRatio,
@@ -15,7 +14,6 @@ import { useAddProjectMutation } from "#api/project";
 import { useTranslation } from "#ri18n";
 
 export default function () {
-    let imgRef = useRef();
     const { t, i18n } = useTranslation();
     let arT = i18n.getFixedT("ar");
     let enT = i18n.getFixedT("en");
@@ -40,13 +38,12 @@ export default function () {
         }
     });
     function handleAddProject() {
-        let formData = new FormData();
-        if (form.getValues().img) formData.append("img", form.getValues().img);
-        formData.append("langs", JSON.stringify(form.getValues().langs));
-
-        formData.append("websiteUrl", form.getValues().websiteUrl);
-        formData.append("githubUrl", form.getValues().githubUrl);
-        addProject(formData);
+        //let formData = new FormData();
+        //if (form.getValues().img) formData.append("img", form.getValues().img);
+        //formData.append("langs", JSON.stringify(form.getValues().langs));
+        //formData.append("websiteUrl", form.getValues().websiteUrl);
+        //formData.append("githubUrl", form.getValues().githubUrl);
+        addProject(form.getValues());
     }
     function handleImgChange(e) {
         form.getValues().img
@@ -101,19 +98,11 @@ export default function () {
                 {...form.getInputProps("githubUrl")}
             />
             <Space h="sm" />
-            <AspectRatio ratio={16 / 9}>
-                <Image ref={imgRef} />
-            </AspectRatio>
-            <Space h="sm" />
-            <FileButton
+            <TextInput
+                label={t("imgUrl")}
+                placeholder={t("enterHere")}
                 {...form.getInputProps("img")}
-                onChange={e => {
-                    form.getInputProps("img").onChange(e);
-                    handleImgChange(e);
-                }}
-            >
-                {props => <Button {...props}>{t("selectImg")}</Button>}
-            </FileButton>
+            />
             <Space h="xl" />
             <Button onClick={handleAddProject} fullWidth>
                 {t("add")}

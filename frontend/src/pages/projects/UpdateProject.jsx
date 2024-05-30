@@ -1,4 +1,3 @@
-import { useRef } from "#r";
 import { useParams } from "#rrd";
 import {
     Box,
@@ -21,8 +20,6 @@ import { useTranslation } from "#ri18n";
 import { handleProjectImg } from "#utils/ele";
 
 export default function () {
-    let imgRef = useRef();
-    let imgEle = document.getElementById("upImg");
     const { projectId } = useParams();
 
     const { t, i18n } = useTranslation();
@@ -35,7 +32,7 @@ export default function () {
     const form = useForm({
         mode: "uncontrolled",
         initialValues: {
-            img: null,
+            img: "",
             githubUrl: "",
             websiteUrl: "",
             langs: {
@@ -52,9 +49,9 @@ export default function () {
     });
     if (isSuccess) {
         let project = {
-            img: null,
             githubUrl: data.project.githubUrl,
             websiteUrl: data.project.websiteUrl,
+            img: data.project.img,
             langs: {
                 ar: {
                     title: data.project.langs.ar.title,
@@ -68,25 +65,14 @@ export default function () {
         };
         form.initialize(project);
     }
-    if (!form.getValues().img) {
-        if (data?.project.img) {
-            imgEle?.setAttribute("src", handleProjectImg(data.project.img));
-        }
-    }
+
     function handleUpdateProject() {
-        let formData = new FormData();
-        if (form.getValues().img) formData.append("img", form.getValues().img);
-        formData.append("langs", JSON.stringify(form.getValues().langs));
-
-        formData.append("websiteUrl", form.getValues().websiteUrl);
-        formData.append("githubUrl", form.getValues().githubUrl);
-        updateProject({ data: formData, projectId });
-    }
-
-    function handleImgChange(e) {
-        form.getValues().img
-            ? (imgRef.current.src = URL.createObjectURL(form.getValues().img))
-            : imgEle.setAttribute("src", handleProjectImg(data.project.img));
+        // let formData = new FormData();
+        // if (form.getValues().img) formData.append("img", form.getValues().img);
+        // formData.append("langs", JSON.stringify(form.getValues().langs));
+        // formData.append("websiteUrl", form.getValues().websiteUrl);
+        // formData.append("githubUrl", form.getValues().githubUrl);
+        updateProject({ data: form.getValues(), projectId });
     }
 
     return (
@@ -137,20 +123,17 @@ export default function () {
                 {...form.getInputProps("githubUrl")}
             />
             <Space h="sm" />
+            <TextInput
+                label={t("imgUrl")}
+                placeholder={t("enterHere")}
+                {...form.getInputProps("imgUrl")}
+            />
+            <Space h="sm" />
             <AspectRatio ratio={16 / 9}>
-                <Image id="upImg" ref={imgRef} />
+                <Image id="upImg" src={handleProjectImg(data?.project.img)} />
             </AspectRatio>
             <Space h="sm" />
-            <Group justify="space-between">
-                <FileButton
-                    {...form.getInputProps("img")}
-                    onChange={e => {
-                        form.getInputProps("img").onChange(e);
-                        handleImgChange(e);
-                    }}
-                >
-                    {props => <Button {...props}>{t("selectImg")}</Button>}
-                </FileButton>
+            <Group>
                 <Button
                     onClick={() => {
                         deleteProject(projectId);
