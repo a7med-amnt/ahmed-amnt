@@ -124,9 +124,9 @@ export default function () {
             />
             <Space h="sm" />
             <TextInput
-                label={t("imgUrl")}
+                label={t("img")}
                 placeholder={t("enterHere")}
-                {...form.getInputProps("imgUrl")}
+                {...form.getInputProps("img")}
             />
             <Space h="sm" />
             <AspectRatio ratio={16 / 9}>
