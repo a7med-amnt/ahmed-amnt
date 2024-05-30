@@ -8,7 +8,7 @@ export const add = eah(async function (rq, rs, nx) {
     const file = rq.file;
 
     if (file) project.img = file.filename;
-    
+
     //project.langs = JSON.parse(project.langs);
 
     let newProject = new Project(project);
@@ -29,7 +29,7 @@ export const getProject = eah(async function (rq, rs, nx) {
 });
 
 export const getProjects = eah(async function (rq, rs, nx) {
-    let projects = await Project.find().sort({createdAt:-1});
+    let projects = await Project.find().sort({ createdAt: -1 });
 
     rs.json({ message: "find projects successfully", projects });
 });
@@ -37,14 +37,14 @@ export const getProjects = eah(async function (rq, rs, nx) {
 export const update = eah(async function (rq, rs, nx) {
     const projectId = rq.params.projectId;
     const project = rq.body;
-    const file = rq.file;
-    let currentProject = await Project.findById(projectId);
+    //const file = rq.file;
+    //let currentProject = await Project.findById(projectId);
 
-    if (file) {
-        project.img = file.filename;
-        if (currentProject.img) removeProjectImg(currentProject.img);
-    }
-    project.langs = JSON.parse(project.langs);
+    //if (file) {
+    //    project.img = file.filename;
+    //    if (currentProject.img) removeProjectImg(currentProject.img);
+    //}
+    //project.langs = JSON.parse(project.langs);
     await Project.findOneAndUpdate({ _id: projectId }, project);
 
     rs.json({ message: "project updated successfully" });
